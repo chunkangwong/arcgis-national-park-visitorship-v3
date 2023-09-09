@@ -1,4 +1,3 @@
-import "@esri/calcite-components/dist/calcite/calcite.css";
 import "./app.css";
 import App from "./App.svelte";
 
