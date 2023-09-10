@@ -19,6 +19,7 @@
   const yearDefault = "F2022";
 
   let layerView: __esri.FeatureLayerView;
+  let loading: boolean = true;
   let count = countDefault;
   let orderBy = orderByDefault;
   let year = yearDefault;
@@ -29,6 +30,7 @@
     if (!layer || !layerView) {
       return;
     }
+    loading = true;
     const query = new TopFeaturesQuery({
       topFilter: new TopFilter({
         topCount: count,
@@ -50,6 +52,7 @@
     });
 
     graphics = results.features;
+    loading = false;
   };
 
   const setRenderer = async () => {
@@ -121,7 +124,7 @@
           {handleYearChange}
           {handleReset}
         />
-        <Results {year} {graphics} />
+        <Results {year} {graphics} {loading} />
       </calcite-panel>
     </calcite-shell-panel>
     <div id="viewDiv" bind:this={viewDiv} />

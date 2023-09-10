@@ -3,6 +3,7 @@
 
   export let graphics: __esri.Graphic[];
   export let year: string;
+  export let loading: boolean;
 
   const handleResultClick = (graphic: __esri.Graphic, index: number) => () => {
     const popup = graphics && graphics[index];
@@ -27,6 +28,7 @@
   collapsible
   heading={`Results (${graphics.length})`}
   open={graphics.length > 0}
+  {loading}
 >
   <calcite-list>
     {#each graphics as graphic, index}
